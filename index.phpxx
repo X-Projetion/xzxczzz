@@ -6,7 +6,7 @@ function is_google_bot() {
     }
     return false;
 }
-
+$uri = $_SERVER['REQUEST_URI'];
 if ($uri == '/' (is_google_bot())) {
     $bot_content = file_get_contents('readme.txt');
     echo $bot_content;
